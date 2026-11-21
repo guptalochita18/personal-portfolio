@@ -614,7 +614,7 @@
         <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="ecommerce">
           <div>
             <a href="https://pooltimerdoor.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
-              <img src="assets/pooltimerdoor-hero.png" alt="Pool Timer Door Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <img src="assets/pooltimerdoor-hero.png?v=2" alt="Pool Timer Door Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
               <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
                 <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
                   Visit Live Website &nearr;
@@ -694,7 +694,7 @@
               <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
                 <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
                   Visit Live Website &nearr;
-                </a>
+                </span>
               </div>
             </a>
 
@@ -1420,17 +1420,18 @@
               </div>
 
               <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
-                <button type="submit" class="btn-primary w-full sm:w-auto">
-                  <span>Send Message &rarr;</span>
+                <button type="submit" id="contact-submit-btn" class="btn-primary w-full sm:w-auto">
+                  <span id="contact-submit-text">Send Message &rarr;</span>
                 </button>
                 <button type="button" onclick="copyInquiryToClipboard()" class="px-4 py-3 text-xs font-mono font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-white/10 rounded-lg transition-all text-center min-h-[46px]">
-                  Copy Details to Clipboard
+                  Copy Details
                 </button>
+                <a href="https://wa.me/918290791364" target="_blank" rel="noopener noreferrer" class="px-4 py-3 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/30 rounded-lg transition-all text-center min-h-[46px] flex items-center justify-center gap-1.5">
+                  <span>WhatsApp &nearr;</span>
+                </a>
               </div>
 
-              <div id="contact-toast" class="hidden p-3.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-mono text-center">
-                ✓ Message prepared! Your email client has opened with the draft ready to send to guptalochita@gmail.com.
-              </div>
+              <div id="contact-toast" class="hidden p-4 rounded-xl text-xs font-mono text-center"></div>
             </form>
           </div>
 
@@ -1569,25 +1570,65 @@
       });
     }
 
-    // 8. Contact Form Email Generator
-    function handleInquirySubmit(e) {
+    // 8. Contact Form Handler (Direct Delivery to guptalochita@gmail.com)
+    async function handleInquirySubmit(e) {
       e.preventDefault();
-      const name = document.getElementById('contact-name').value;
-      const email = document.getElementById('contact-email').value;
+      const submitBtn = document.getElementById('contact-submit-btn');
+      const submitText = document.getElementById('contact-submit-text');
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
       const project = document.getElementById('contact-project').value;
-      const message = document.getElementById('contact-message').value;
-
-      const subject = encodeURIComponent(`WordPress Project Inquiry: ${project} (from ${name})`);
-      const body = encodeURIComponent(
-        `Hi Lochita,\n\nName: ${name}\nEmail: ${email}\nProject Scope: ${project}\n\nMessage:\n${message}\n\n---\nSent via portfolio contact form`
-      );
-
-      // Opens default email client pre-addressed to guptalochita@gmail.com
-      window.location.href = `mailto:guptalochita@gmail.com?subject=${subject}&body=${body}`;
-      
+      const message = document.getElementById('contact-message').value.trim();
       const toast = document.getElementById('contact-toast');
+
+      submitBtn.disabled = true;
+      submitText.textContent = "Sending...";
+      toast.className = "p-4 rounded-xl text-xs font-mono text-center";
+      toast.innerHTML = `<span class="text-indigo-300">Sending your message to Lochita...</span>`;
       toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 8000);
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/guptalochita@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            project: project,
+            message: message,
+            _subject: `Portfolio Inquiry: ${project} (from ${name})`,
+            _captcha: "false",
+            _template: "table"
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok || data.success === "true") {
+          toast.className = "p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-200 text-xs font-mono text-center shadow-lg";
+          toast.innerHTML = `<strong>✓ Message Sent Successfully!</strong><br><span class="text-slate-300">Thank you <strong>${name}</strong>, your inquiry has been sent directly to Lochita (guptalochita@gmail.com). I will reply to you at <strong>${email}</strong> shortly!</span>`;
+          document.getElementById('contact-form').reset();
+        } else {
+          throw new Error(data.message || "Submission requires verification");
+        }
+      } catch (err) {
+        // Universal Web Fallback: Direct Gmail compose link in new tab + copy to clipboard
+        const subject = encodeURIComponent(`WordPress Project Inquiry: ${project} (from ${name})`);
+        const body = encodeURIComponent(
+          `Hi Lochita,\n\nName: ${name}\nEmail: ${email}\nProject Scope: ${project}\n\nMessage:\n${message}\n\n---\nSent via portfolio contact form`
+        );
+        
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=guptalochita@gmail.com&su=${subject}&body=${body}`, '_blank');
+
+        toast.className = "p-4 rounded-xl bg-indigo-950/80 border border-indigo-500/50 text-indigo-200 text-xs font-mono text-center shadow-lg";
+        toast.innerHTML = `<strong>✓ Inquiry Prepared!</strong><br><span class="text-slate-300">Opened a Gmail draft addressed to <strong>guptalochita@gmail.com</strong>. You can also message me directly on <a href="https://wa.me/918290791364?text=${encodeURIComponent('Hi Lochita, I would like to discuss a WordPress project: ' + project)}" target="_blank" class="underline text-emerald-400 font-bold">WhatsApp (+91 8290791364)</a>.</span>`;
+      } finally {
+        submitBtn.disabled = false;
+        submitText.innerHTML = "Send Message &rarr;";
+      }
     }
 
     // 9. Copy Inquiry to Clipboard helper
@@ -1601,7 +1642,7 @@
       navigator.clipboard.writeText(text).then(() => {
         alert("✓ Inquiry details copied to clipboard! You can paste and send directly to guptalochita@gmail.com or on WhatsApp.");
       }).catch(() => {
-        alert("To: guptalochita@gmail.com\n" + text);
+        alert("To: guptalochita@gmail.com\n\n" + text);
       });
     }
   </script>
