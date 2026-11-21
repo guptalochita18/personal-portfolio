@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Lochita Gupta | WordPress Developer &amp; Web Engineer</title>
+  <meta name="description" content="Official portfolio of Lochita Gupta — WordPress Developer with 1+ year commercial experience building 20+ production WordPress &amp; WooCommerce websites, custom PHP plugins, and API integrations." />
+  <meta name="keywords" content="Lochita Gupta, WordPress Developer, WooCommerce Developer, Custom Plugin Developer, Divi Theme Builder, Elementor Pro, PHP Developer, Freelance Web Developer" />
+  <meta name="author" content="Lochita Gupta" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lochita Gupta | WordPress Developer &amp; Web Engineer" />
+  <meta property="og:description" content="1+ year commercial experience, 20+ production WordPress sites, custom WooCommerce plugins, and API integrations." />
+  <meta property="og:image" content="assets/lochita-profile.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23818cf8'/><text x='50%' y='56%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='46' fill='white'>LG</text></svg>" />
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: {
+              950: '#020617',
+              900: '#0b1120',
+              850: '#0f172a',
+              800: '#1e293b',
+              700: '#334155'
+            },
+            theme: {
+              accent: '#818cf8',      // Soft Indigo
+              secondary: '#c084fc',   // Soft Lavender
+              muted: '#94a3b8'        // Slate text
+            }
+          },
+          fontFamily: {
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-color: #020617;
+      --text-color: #f8fafc;
+      --accent-color: #818cf8;
+      --accent-secondary: #c084fc;
+      --card-bg: rgba(30, 41, 59, 0.45);
+      --card-border: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      selection-background-color: #818cf8;
+      selection-color: #ffffff;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Fixed Navbar Scroll State */
+    .navbar-scrolled {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Nav Link Hover Underline */
+    .nav-item {
+      position: relative;
+      color: #94a3b8;
+      transition: color 0.3s ease;
+    }
+    .nav-item:hover {
+      color: #f8fafc;
+    }
+    .nav-item::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, #818cf8, #c084fc);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    .nav-item:hover::after {
+      width: 100%;
+    }
+
+    /* Primary Gradient Button */
+    .btn-primary {
+      background: linear-gradient(135deg, #818cf8, #c084fc);
+      color: #ffffff;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: 8px;
+      padding: 0.85rem 1.75rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(129, 140, 248, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 46px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(129, 140, 248, 0.4);
+      filter: brightness(1.06);
+    }
+
+    /* Secondary Outlined Button */
+    .btn-secondary {
+      background: transparent;
+      color: #f8fafc;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 8px;
+      padding: 0.85rem 1.75rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+    }
+    .btn-secondary:hover {
+      border-color: #818cf8;
+      background: rgba(129, 140, 248, 0.08);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Cohesive Clean Slate Card */
+    .slate-card {
+      background: rgba(30, 41, 59, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .slate-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(129, 140, 248, 0.35);
+      box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Signature Section Header Line */
+    .header-line {
+      width: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, #818cf8, #c084fc);
+      border-radius: 2px;
+      margin: 0.8rem auto 2.5rem auto;
+    }
+
+    /* Unified Tech Badge */
+    .tech-pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #818cf8;
+      background: rgba(129, 140, 248, 0.1);
+      border: 1px solid rgba(129, 140, 248, 0.2);
+      border-radius: 20px;
+      padding: 0.25rem 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Vertical Timeline Mobile Friendly */
+    .timeline-container {
+      position: relative;
+      border-left: 2px solid rgba(129, 140, 248, 0.25);
+      margin-left: 0.5rem;
+      padding-left: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .timeline-container {
+        margin-left: 1rem;
+        padding-left: 2rem;
+      }
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -1.25rem;
+      top: 6px;
+      transform: translate(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #818cf8;
+      border: 2px solid #020617;
+      box-shadow: 0 0 10px rgba(129, 140, 248, 0.6);
+    }
+    @media (min-width: 640px) {
+      .timeline-dot {
+        left: -2rem;
+      }
+    }
+
+    /* Crisp Image Rendering */
+    .crisp-img {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="selection:bg-indigo-500/30 selection:text-indigo-200 antialiased">
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 sm:py-5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-1.5 text-lg sm:text-xl font-extrabold tracking-tight text-white group">
+        <span>Lochita Gupta</span>
+        <span class="text-indigo-400 text-2xl leading-none font-black group-hover:text-purple-400 transition-colors">.</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-7 lg:gap-8 text-sm font-medium">
+        <a href="#home" class="nav-item">Home</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#plugins" class="nav-item">Custom Plugins</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#experience" class="nav-item">Experience</a>
+        <a href="#education" class="nav-item">Education</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </div>
+
+      <!-- Right CTAs -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="toggleResumeModal(true)" class="px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-white/10 rounded-lg transition-all min-h-[38px]">
+          Resume
+        </button>
+        <a href="#contact" class="px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 rounded-lg transition-all shadow-md shadow-indigo-500/25 min-h-[38px] flex items-center">
+          Hire Me
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button (Touch Target 44x44) -->
+      <button onclick="toggleMobileNav()" class="md:hidden p-2.5 text-slate-300 hover:text-white rounded-lg bg-slate-800/60 border border-white/10" aria-label="Toggle Menu">
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-nav" class="hidden md:hidden fixed top-[64px] left-0 w-full bg-[#0b1120fa] border-b border-white/10 backdrop-blur-2xl p-5 space-y-4 shadow-2xl transition-all">
+      <div class="flex flex-col gap-2.5 font-medium text-slate-200 text-sm">
+        <a href="#home" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">Home</a>
+        <a href="#about" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">About</a>
+        <a href="#projects" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">Projects (Client Websites)</a>
+        <a href="#plugins" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">Custom Plugins</a>
+        <a href="#skills" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">Skills</a>
+        <a href="#experience" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">Experience</a>
+        <a href="#education" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">Education</a>
+        <a href="#contact" onclick="toggleMobileNav()" class="py-2.5 px-3 rounded-lg hover:bg-white/5 hover:text-indigo-400">Contact</a>
+      </div>
+      <div class="pt-3 border-t border-white/10 flex gap-2.5">
+        <button onclick="toggleMobileNav(); toggleResumeModal(true)" class="flex-1 py-3 text-xs font-semibold bg-slate-800 text-slate-200 rounded-lg border border-white/10 min-h-[44px]">
+          View Resume
+        </button>
+        <a href="#contact" onclick="toggleMobileNav()" class="flex-1 py-3 text-center text-xs font-bold text-white bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg min-h-[44px] flex items-center justify-center">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION (CLEAN BACKGROUND & RESPONSIVE LAYOUT) ==================== -->
+  <section id="home" class="relative min-h-[85vh] sm:min-h-[90vh] w-full flex items-center justify-center pt-28 pb-16 sm:pt-36 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#020617] via-[#070d1d] to-[#020617]">
+    
+    <!-- Clean, static subtle ambient glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-14 items-center">
+        
+        <!-- Left: Text & Bio -->
+        <div class="lg:col-span-7 flex flex-col items-start space-y-5 sm:space-y-6">
+          
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[11px] sm:text-xs font-mono font-semibold text-indigo-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>AVAILABLE FOR FREELANCE &bull; INDIA</span>
+          </div>
+
+          <div class="space-y-1.5 sm:space-y-2">
+            <div class="text-indigo-400 text-xs sm:text-base font-bold tracking-widest uppercase">
+              Hi, I Am
+            </div>
+            <h1 class="text-3xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1]">
+              Lochita Gupta<span class="text-indigo-400">.</span>
+            </h1>
+            <div class="text-xl sm:text-4xl lg:text-5xl font-extrabold text-purple-400/95 tracking-tight leading-tight pt-1">
+              WordPress Developer
+            </div>
+          </div>
+
+          <p class="text-sm sm:text-base lg:text-lg text-slate-200 max-w-xl leading-relaxed">
+            Crafting responsive websites, tailored e-commerce stores, and custom PHP functionality for businesses worldwide. Over <strong>20+ live client websites</strong> engineered with clean code standards.
+          </p>
+
+          <!-- Core Stat Cards (Mobile Optimized Grid) -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-4 w-full max-w-lg py-3 sm:py-3.5 border-y border-white/10 font-mono text-center">
+            <div>
+              <div class="text-xl sm:text-3xl font-extrabold text-white">20+</div>
+              <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Live Sites</div>
+            </div>
+            <div>
+              <div class="text-xl sm:text-3xl font-extrabold text-white">1+ Year</div>
+              <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Commercial Dev</div>
+            </div>
+            <div>
+              <div class="text-xl sm:text-3xl font-extrabold text-white">2</div>
+              <div class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Custom Plugins</div>
+            </div>
+          </div>
+
+          <!-- CTAs (Full width on mobile) -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto pt-2">
+            <a href="#projects" class="btn-primary w-full sm:w-auto text-center">
+              <span>View Projects</span>
+              <span>&rarr;</span>
+            </a>
+            <a href="#contact" class="btn-secondary w-full sm:w-auto text-center">
+              Contact Me
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right: Portrait Showcase -->
+        <div class="lg:col-span-5 flex justify-center w-full">
+          <div class="relative w-full max-w-[300px] sm:max-w-sm lg:max-w-md">
+            
+            <div class="slate-card p-3 sm:p-5 relative shadow-2xl overflow-hidden group">
+              
+              <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-slate-900 border border-white/10">
+                <img
+                  id="hero-profile-photo"
+                  src="assets/lochita-profile.png?v=8"
+                  alt="Lochita Gupta - WordPress Developer"
+                  class="w-full h-full object-cover object-top crisp-img transition-transform duration-500 group-hover:scale-105"
+                  onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'400\' height=\'500\' fill=\'%230f172a\'/><circle cx=\'200\' cy=\'190\' r=\'80\' fill=\'%23818cf8\' opacity=\'0.3\'/><text x=\'200\' y=\'200\' text-anchor=\'middle\' fill=\'white\' font-size=\'44\' font-family=\'sans-serif\'>Lochita</text><text x=\'200\' y=\'240\' text-anchor=\'middle\' fill=\'%2394a3b8\' font-size=\'16\' font-family=\'sans-serif\'>WordPress Developer</text></svg>'"
+                />
+
+                <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-85 pointer-events-none"></div>
+
+                <!-- Update photo pill -->
+                <div class="absolute top-2.5 right-2.5 z-20">
+                  <label class="cursor-pointer px-2.5 py-1 rounded-lg bg-slate-900/90 hover:bg-slate-900 text-white text-[10px] sm:text-[11px] font-mono flex items-center gap-1 border border-white/20 transition-all hover:border-indigo-400 shadow-lg">
+                    <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Change Photo</span>
+                    <input type="file" id="photo-upload-input" accept="image/*" class="hidden" onchange="handleUserPhotoUpload(event)" />
+                  </label>
+                </div>
+
+                <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 z-10 pointer-events-none">
+                  <div class="text-[11px] font-mono text-indigo-400 font-semibold">Lochita Gupta</div>
+                  <div class="text-sm sm:text-base font-bold text-white tracking-tight">WordPress Developer &bull; Web Engineer</div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">India &bull; Remote &amp; Global Projects</div>
+                </div>
+              </div>
+
+              <!-- Tech Pills Row -->
+              <div class="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-white/10 flex flex-wrap gap-1 sm:gap-1.5 justify-center">
+                <span class="tech-pill text-[11px]">WordPress</span>
+                <span class="tech-pill text-[11px]">WooCommerce</span>
+                <span class="tech-pill text-[11px]">Divi</span>
+                <span class="tech-pill text-[11px]">Elementor</span>
+                <span class="tech-pill text-[11px]">PHP</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <section id="about" class="py-16 sm:py-24 relative z-10 bg-[#0b112040]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">About Me</h2>
+        <div class="header-line"></div>
+        <p class="max-w-2xl mx-auto text-slate-400 text-xs sm:text-base leading-relaxed px-2">
+          Turning ideas into responsive, high-performing websites with custom functionality and clean code standards.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+        
+        <!-- Portrait in About -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-[280px] sm:max-w-sm">
+            <div class="slate-card p-3 sm:p-4 shadow-xl">
+              <div class="aspect-square rounded-xl overflow-hidden bg-slate-900 border border-white/10 relative">
+                <img id="about-profile-photo" src="assets/lochita-profile.png?v=8" alt="Lochita Gupta" class="w-full h-full object-cover object-top crisp-img" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%230f172a\'/><text x=\'200\' y=\'210\' text-anchor=\'middle\' fill=\'white\' font-size=\'40\'>Lochita Gupta</text></svg>'">
+                <div class="absolute bottom-2 left-2 right-2 bg-slate-950/85 backdrop-blur-md px-3 py-1 rounded-lg text-center text-xs font-mono text-slate-300">
+                  Lochita Gupta &bull; India
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative & Value Points -->
+        <div class="lg:col-span-7 space-y-4 sm:space-y-6">
+          <h3 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+            WordPress Developer crafting tailored web solutions for businesses.
+          </h3>
+
+          <div class="space-y-3 sm:space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              I am a WordPress Developer with 1+ year of professional experience building and maintaining production WordPress and WooCommerce websites, plus custom plugin development and API integrations (Google Gemini API, Accept Blue payment gateway).
+            </p>
+            <p>
+              I have developed and maintained more than <strong>20+ live client websites</strong> across healthcare, e-commerce, consulting, and service industries. Skilled in PHP, JavaScript, HTML, CSS, theme customization, responsive web design, and website optimization.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-2 text-xs sm:text-sm text-slate-300">
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-400 font-bold">&bull;</span>
+              <span>20+ Commercial Live Websites</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-400 font-bold">&bull;</span>
+              <span>Responsive &amp; Mobile-First Mindset</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-400 font-bold">&bull;</span>
+              <span>Custom PHP Plugins &amp; Integrations</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-400 font-bold">&bull;</span>
+              <span>WooCommerce Stores &amp; Payment Gateways</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-400 font-bold">&bull;</span>
+              <span>On-Page SEO &amp; Speed Optimization</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-400 font-bold">&bull;</span>
+              <span>Divi Builder &amp; Elementor Pro Mastery</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED PROJECTS (MOBILE OPTIMIZED, REAL HERO SCREENSHOTS) ==================== -->
+  <section id="projects" class="py-16 sm:py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-8 sm:mb-12">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Featured Projects</h2>
+        <div class="header-line"></div>
+        <p class="max-w-2xl mx-auto text-slate-400 text-xs sm:text-base leading-relaxed px-2">
+          Genuine commercial websites and e-commerce stores I have built and launched. Tap any card or screenshot to visit the live site.
+        </p>
+      </div>
+
+      <!-- Filter Controls (Horizontally Scrollable / Wrapped for Mobile) -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-10 sm:mb-14">
+        <button onclick="filterProjects('all')" id="tab-all" class="px-3.5 sm:px-5 py-2 rounded-full text-xs font-semibold transition-all bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-500/20">
+          All (10)
+        </button>
+        <button onclick="filterProjects('ecommerce')" id="tab-ecommerce" class="px-3.5 sm:px-5 py-2 rounded-full text-xs font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-white/10">
+          E-Commerce (3)
+        </button>
+        <button onclick="filterProjects('healthcare')" id="tab-healthcare" class="px-3.5 sm:px-5 py-2 rounded-full text-xs font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-white/10">
+          Healthcare &amp; Spa (3)
+        </button>
+        <button onclick="filterProjects('fitness')" id="tab-fitness" class="px-3.5 sm:px-5 py-2 rounded-full text-xs font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-white/10">
+          Fitness &amp; Services (2)
+        </button>
+        <button onclick="filterProjects('advisory')" id="tab-advisory" class="px-3.5 sm:px-5 py-2 rounded-full text-xs font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-white/10">
+          Corporate &amp; Finance (2)
+        </button>
+      </div>
+
+      <!-- Projects Grid (1 Column on Mobile, 2 on Tablet, 3 on Desktop) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- 1. Stenzel Industries -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="ecommerce">
+          <div>
+            <a href="https://stenzelindustries.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/stenzel-hero.png" alt="Stenzel Industries Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">E-Commerce</span>
+                <span class="text-[11px] text-slate-400 font-mono">B2B Machinery</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Stenzel Industries</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Industrial machinery B2B e-commerce platform featuring heavy CNC machining center catalogs, custom product specifications, quote cart flows, and custom Accept Blue payment processor integration.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">WooCommerce</span>
+              <span class="tech-pill">PHP</span>
+              <span class="tech-pill">Accept Blue</span>
+            </div>
+            <a href="https://stenzelindustries.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://stenzelindustries.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. King Hardscapes -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="ecommerce">
+          <div>
+            <a href="https://kinghardscapes.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/kinghardscapes-hero.png" alt="King Hardscapes Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">E-Commerce</span>
+                <span class="text-[11px] text-slate-400 font-mono">Outdoor Living</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">King Hardscapes</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Full-scale outdoor living and hardscape supply e-commerce store with over 30 product category pages, paver square-footage calculators, contractor portal, and responsive side cart.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">WooCommerce</span>
+              <span class="tech-pill">Divi</span>
+              <span class="tech-pill">Side Cart</span>
+            </div>
+            <a href="https://kinghardscapes.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://kinghardscapes.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Pool Timer Door -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="ecommerce">
+          <div>
+            <a href="https://pooltimerdoor.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/pooltimerdoor-hero.png" alt="Pool Timer Door Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">E-Commerce</span>
+                <span class="text-[11px] text-slate-400 font-mono">Safety Hardware</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Pool Timer Door</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                E-commerce store specializing in specialized pool safety door hardware and automated timer systems designed for residential and commercial pool code compliance.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">WooCommerce</span>
+              <span class="tech-pill">Stripe</span>
+              <span class="tech-pill">Responsive</span>
+            </div>
+            <a href="https://pooltimerdoor.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://pooltimerdoor.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Three Lakes MD -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="healthcare">
+          <div>
+            <a href="https://threelakesmd.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/threelakesmd-hero.png" alt="Three Lakes MD Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Healthcare</span>
+                <span class="text-[11px] text-slate-400 font-mono">Regenerative Practice</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Three Lakes MD</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Functional and regenerative healthcare practice featuring 23 service pages, peptide therapies, hormone optimization, and a verified audit of 1,150+ internal links and redirects.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">Divi</span>
+              <span class="tech-pill">Link QA</span>
+              <span class="tech-pill">Telehealth</span>
+            </div>
+            <a href="https://threelakesmd.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://threelakesmd.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Le Paon Wellness Spa -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="healthcare">
+          <div>
+            <a href="https://lepaonwellnessspa.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/lepaonspa-hero.png" alt="Le Paon Wellness Spa Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </a>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Aesthetics</span>
+                <span class="text-[11px] text-slate-400 font-mono">Day Spa</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Le Paon Wellness Spa</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Tranquil, high-end wellness spa website offering massage therapy, organic facials, body treatments, and infrared sauna packages in an elegant, serene atmosphere.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">Elementor Pro</span>
+              <span class="tech-pill">Booking System</span>
+              <span class="tech-pill">Luxury UI</span>
+            </div>
+            <a href="https://lepaonwellnessspa.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://lepaonwellnessspa.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Aesthetic Velocity -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="healthcare">
+          <div>
+            <a href="https://aestheticvelocity.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/aestheticvelocity-hero.png" alt="Aesthetic Velocity Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Marketing</span>
+                <span class="text-[11px] text-slate-400 font-mono">MedSpa Growth</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Aesthetic Velocity</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Performance-driven digital platform for medical spas and aesthetic clinics, showcasing laser therapies, injectables, body contouring, and patient acquisition funnels.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">Divi</span>
+              <span class="tech-pill">Lead Funnels</span>
+              <span class="tech-pill">SEO Schema</span>
+            </div>
+            <a href="https://aestheticvelocity.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://aestheticvelocity.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Her Fit Studio -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="fitness">
+          <div>
+            <a href="https://herfitstudiosa.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/herfitstudio-hero.png" alt="Her Fit Studio Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Fitness</span>
+                <span class="text-[11px] text-slate-400 font-mono">Community</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Her Fit Studio</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Empowering women's fitness studio website featuring group training schedules, membership packages, personal coaching programs, and community stories.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">Elementor Pro</span>
+              <span class="tech-pill">Timetable UI</span>
+              <span class="tech-pill">Mobile First</span>
+            </div>
+            <a href="https://herfitstudiosa.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://herfitstudiosa.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. Hall Kairos Group -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="advisory">
+          <div>
+            <a href="https://hallkairosgroup.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/hallkairos-hero.png" alt="Hall Kairos Group Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Corporate</span>
+                <span class="text-[11px] text-slate-400 font-mono">Executive Advisory</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Hall Kairos Group</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Executive advisory and corporate consulting platform providing organizational development, strategic leadership guidance, and growth roadmaps for enterprise leaders.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">Custom Layouts</span>
+              <span class="tech-pill">Corporate UX</span>
+              <span class="tech-pill">Lead Forms</span>
+            </div>
+            <a href="https://hallkairosgroup.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://hallkairosgroup.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. Health & Wealth Planning -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="advisory">
+          <div>
+            <a href="https://healthandwealthplanning.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/healthandwealth-hero.png" alt="Health and Wealth Planning Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Finance</span>
+                <span class="text-[11px] text-slate-400 font-mono">Retirement Planning</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">Health &amp; Wealth Planning</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Comprehensive financial planning and healthcare retirement advisory website helping families navigate Medicare, retirement income, and wealth preservation.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">Divi</span>
+              <span class="tech-pill">SEO</span>
+              <span class="tech-pill">Financial UX</span>
+            </div>
+            <a href="https://healthandwealthplanning.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://healthandwealthplanning.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 10. MK9 Dog Training & Boarding -->
+        <div class="project-item slate-card overflow-hidden flex flex-col justify-between group" data-category="fitness">
+          <div>
+            <a href="https://mk9sf.com/" target="_blank" rel="noopener noreferrer" class="block relative h-48 sm:h-56 bg-slate-900 border-b border-white/10 overflow-hidden cursor-pointer">
+              <img src="assets/mk9dog-hero.png" alt="MK9 Dog Training and Boarding Website Hero Screenshot" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 text-center hidden sm:flex">
+                <span class="px-4 py-2 rounded-lg bg-indigo-500 text-white font-bold text-xs shadow-md">
+                  Visit Live Website &nearr;
+                </span>
+              </div>
+            </a>
+
+            <div class="p-5 sm:p-6 space-y-2.5 sm:space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-indigo-400 uppercase tracking-wider">Services</span>
+                <span class="text-[11px] text-slate-400 font-mono">Dog Training &amp; Boarding</span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white">MK9 Dog Training &amp; Boarding</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Built a lead-generation website with structured training programs, service pages, inquiry forms, and mobile-friendly navigation.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 pt-0 space-y-3.5">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="tech-pill">WordPress</span>
+              <span class="tech-pill">Lead Generation</span>
+              <span class="tech-pill">Mobile Friendly</span>
+              <span class="tech-pill">Forms</span>
+            </div>
+            <a href="https://mk9sf.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors py-1">
+              <span>https://mk9sf.com/</span>
+              <span>&nearr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CUSTOM PLUGINS SECTION ==================== -->
+  <section id="plugins" class="py-16 sm:py-24 relative z-10 bg-[#0b112040]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Custom Plugins</h2>
+        <div class="header-line"></div>
+        <p class="max-w-2xl mx-auto text-slate-400 text-xs sm:text-base leading-relaxed px-2">
+          Beyond standard site building: custom PHP plugins engineered from scratch with dedicated admin dashboards, external REST APIs, and payment hooks.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        
+        <!-- Plugin 1: Chat Pilot -->
+        <div class="slate-card p-5 sm:p-8 flex flex-col justify-between">
+          <div class="space-y-4 sm:space-y-5">
+            <div class="flex items-center justify-between">
+              <span class="tech-pill">AI Chatbot WordPress Plugin</span>
+              <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Production Live</span>
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <img src="assets/chat-pilot-mark-64.png" alt="Chat Pilot" class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl bg-slate-900 p-1 border border-white/10" onerror="this.style.display='none'">
+              <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white">Chat Pilot</h3>
+                <p class="text-xs text-indigo-400 font-mono">AI Conversational Plugin for WordPress</p>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              "Developed a WordPress plugin and platform that adds an AI-powered chatbot to business websites, answering visitor questions using the Google Gemini API. Built configurable AI provider support, manual business information knowledge base, and chatbot settings managed through an admin dashboard."
+            </p>
+
+            <div class="p-3.5 sm:p-4 rounded-xl bg-slate-900/80 border border-white/10 font-mono text-xs space-y-2">
+              <div class="flex justify-between text-slate-400 text-[11px] pb-1 border-b border-white/10">
+                <span>Features Delivered:</span>
+                <span class="text-indigo-400">Google Gemini API</span>
+              </div>
+              <div class="text-slate-300">&bull; Admin settings panel with provider toggles &amp; API key configuration</div>
+              <div class="text-slate-300">&bull; Website knowledge base with manual business FAQ management</div>
+              <div class="text-slate-300">&bull; Stack: PHP, JavaScript, React.js, Node.js, MongoDB, WordPress Plugin API</div>
+            </div>
+          </div>
+
+          <div class="mt-5 sm:mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <span class="text-xs font-mono text-slate-400">appchatpilot.vercel.app</span>
+            <a href="https://appchatpilot.vercel.app/" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xs transition-all shadow-md text-center min-h-[42px] flex items-center justify-center">
+              View Chat Pilot App &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Plugin 2: Stenzel Commerce Suite -->
+        <div class="slate-card p-5 sm:p-8 flex flex-col justify-between">
+          <div class="space-y-4 sm:space-y-5">
+            <div class="flex items-center justify-between">
+              <span class="tech-pill">WooCommerce Payment Gateway</span>
+              <span class="text-xs font-mono text-indigo-400">Accept Blue API</span>
+            </div>
+
+            <div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white">Stenzel Commerce Suite</h3>
+              <p class="text-xs text-indigo-400 font-mono">B2B Heavy Equipment Payment Processing</p>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              "A custom WordPress plugin built to extend WooCommerce functionality and integrate Accept Blue payment processing. The project involved payment-related functionality, checkout integration, and custom implementation."
+            </p>
+
+            <div class="p-3.5 sm:p-4 rounded-xl bg-slate-900/80 border border-white/10 space-y-3 font-mono">
+              <div class="text-[11px] uppercase text-slate-400 font-bold">Transaction Architecture:</div>
+              <div class="grid grid-cols-4 gap-1.5 sm:gap-2 text-center text-[10px]">
+                <div class="p-2 rounded bg-slate-800 border border-white/5 text-slate-200">
+                  <div class="text-indigo-400 font-bold">01</div>
+                  <span>WC Cart</span>
+                </div>
+                <div class="p-2 rounded bg-slate-800 border border-white/5 text-slate-200">
+                  <div class="text-indigo-400 font-bold">02</div>
+                  <span>Plugin Hook</span>
+                </div>
+                <div class="p-2 rounded bg-slate-800 border border-white/5 text-slate-200">
+                  <div class="text-indigo-400 font-bold">03</div>
+                  <span>Accept Blue</span>
+                </div>
+                <div class="p-2 rounded bg-slate-800 border border-white/5 text-slate-200">
+                  <div class="text-indigo-400 font-bold">04</div>
+                  <span>Token Logged</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 sm:mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">wc_add_payment_gateway</span>
+            <span class="text-xs font-mono text-emerald-400">PCI-DSS Compliant Flow</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS SECTION ==================== -->
+  <section id="skills" class="py-16 sm:py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Technical Skills</h2>
+        <div class="header-line"></div>
+        <p class="max-w-2xl mx-auto text-slate-400 text-xs sm:text-base leading-relaxed px-2">
+          Comprehensive skills extracted directly from commercial project experience.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        
+        <!-- Category 1: WordPress Development -->
+        <div class="slate-card p-5 sm:p-7 space-y-3.5 sm:space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center font-bold text-lg shrink-0">
+              WP
+            </div>
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-white">WordPress Development</h3>
+              <p class="text-xs text-slate-400">Core architecture &amp; dynamic templating</p>
+            </div>
+          </div>
+          <div class="text-xs sm:text-sm text-slate-300 font-medium">
+            Custom Plugin Development, Theme Customization, Divi Theme Builder, Elementor &amp; Elementor Pro, Advanced Custom Fields (ACF), Dynamic Content Templates.
+          </div>
+          <div class="h-[1px] bg-white/5 my-2"></div>
+          <div class="text-xs text-slate-400 leading-relaxed">
+            Website Migration &amp; Maintenance, Gutenberg, Custom Post Types (CPT), and Child Themes.
+          </div>
+        </div>
+
+        <!-- Category 2: Frontend Development & Languages -->
+        <div class="slate-card p-5 sm:p-7 space-y-3.5 sm:space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center font-bold text-lg shrink-0">
+              FE
+            </div>
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-white">Languages &amp; Frontend</h3>
+              <p class="text-xs text-slate-400">Clean, responsive interfaces</p>
+            </div>
+          </div>
+          <div class="text-xs sm:text-sm text-slate-300 font-medium">
+            JavaScript, HTML5, CSS3, PHP, Python, React.js, Node.js, Express.js, Bootstrap.
+          </div>
+          <div class="h-[1px] bg-white/5 my-2"></div>
+          <div class="text-xs text-slate-400 leading-relaxed">
+            Responsive Web Design, Cross-Browser Compatibility, CSS Animations, UI Implementation, and Modern DOM Scripting.
+          </div>
+        </div>
+
+        <!-- Category 3: E-Commerce, APIs & Databases -->
+        <div class="slate-card p-5 sm:p-7 space-y-3.5 sm:space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center font-bold text-lg shrink-0">
+              BE
+            </div>
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-white">E-Commerce &amp; Integrations</h3>
+              <p class="text-xs text-slate-400">WooCommerce &amp; custom API pipelines</p>
+            </div>
+          </div>
+          <div class="text-xs sm:text-sm text-slate-300 font-medium">
+            WooCommerce, Payment Gateway Integration (Accept Blue, Stripe), Checkout Customization, Google Gemini API.
+          </div>
+          <div class="h-[1px] bg-white/5 my-2"></div>
+          <div class="text-xs text-slate-400 leading-relaxed">
+            Third-Party Plugin Integration, Google Maps, Analytics, MySQL, MongoDB, and REST APIs.
+          </div>
+        </div>
+
+        <!-- Category 4: SEO, Optimization & Tools -->
+        <div class="slate-card p-5 sm:p-7 space-y-3.5 sm:space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center font-bold text-lg shrink-0">
+              QA
+            </div>
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-white">Optimization, SEO &amp; Tools</h3>
+              <p class="text-xs text-slate-400">Speed, audit &amp; engineering workflow</p>
+            </div>
+          </div>
+          <div class="text-xs sm:text-sm text-slate-300 font-medium">
+            SEO Fundamentals, Website Optimization, Image Compression, Google PageSpeed Insights, Git, VS Code.
+          </div>
+          <div class="h-[1px] bg-white/5 my-2"></div>
+          <div class="text-xs text-slate-400 leading-relaxed">
+            Troubleshooting, Debugging, Client Communication, Requirement Analysis, Time Management, Tableau, Wix.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PROFESSIONAL EXPERIENCE (EXACTLY AS PER RESUME) ==================== -->
+  <section id="experience" class="py-16 sm:py-24 relative z-10 bg-[#0b112040]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Professional Experience</h2>
+        <div class="header-line"></div>
+        <p class="text-slate-400 text-xs sm:text-base leading-relaxed px-2">
+          My commercial history building and maintaining production web applications.
+        </p>
+      </div>
+
+      <!-- Vertical Timeline with Resume Roles -->
+      <div class="timeline-container space-y-10 sm:space-y-12">
+        
+        <!-- Role 1: Digital Suncity -->
+        <div class="relative">
+          <div class="timeline-dot"></div>
+          <div class="slate-card p-5 sm:p-8 space-y-3.5 sm:space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+              <div>
+                <h3 class="text-lg sm:text-2xl font-bold text-white">Web Developer</h3>
+                <div class="text-xs sm:text-sm font-semibold text-indigo-400 mt-0.5">Digital Suncity &bull; Full-time</div>
+              </div>
+              <div class="text-[11px] sm:text-xs font-mono font-medium text-purple-300 bg-purple-500/10 border border-purple-500/25 px-2.5 py-1 rounded-full self-start sm:self-auto">
+                June 2025 – Present &bull; Jodhpur, India (Remote)
+              </div>
+            </div>
+            
+            <ul class="space-y-2 pt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Developed and maintained <strong>20+ production WordPress websites</strong> using Divi, Elementor, WooCommerce, and Advanced Custom Fields (ACF) across healthcare, e-commerce, consulting, and service industries.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Developed custom WordPress plugins, including a <strong>Google Gemini-powered AI chatbot</strong> and an <strong>Accept Blue payment gateway integration</strong> for WooCommerce.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Built reusable dynamic page templates with Divi Theme Builder and ACF to streamline content management across client sites.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Customized WordPress themes, templates, and plugins to match client branding and business requirements.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Built WooCommerce stores with customized product pages, category layouts, and checkout pages.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Delivered fully responsive, cross-browser compatible websites and improved performance through image optimization, plugin management, and clean layouts.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Managed website migrations, backups, staging environments, and deployments, and handled bug fixing, troubleshooting, and updates for live sites.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Worked directly with clients to gather requirements, recommend technical solutions, and deliver projects within deadlines.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Role 2: Celebal Technologies -->
+        <div class="relative">
+          <div class="timeline-dot"></div>
+          <div class="slate-card p-5 sm:p-8 space-y-3.5 sm:space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+              <div>
+                <h3 class="text-lg sm:text-2xl font-bold text-white">Data Science Intern</h3>
+                <div class="text-xs sm:text-sm font-semibold text-indigo-400 mt-0.5">Celebal Technologies &bull; Internship</div>
+              </div>
+              <div class="text-[11px] sm:text-xs font-mono font-medium text-slate-300 bg-slate-800 border border-white/10 px-2.5 py-1 rounded-full self-start sm:self-auto">
+                May 2024 – August 2024 &bull; Jaipur, India (Remote)
+              </div>
+            </div>
+            
+            <ul class="space-y-2 pt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <li class="flex items-start gap-2.5">
+                <span class="text-indigo-400 font-bold shrink-0">&bull;</span>
+                <span>Cleaned and analyzed structured datasets using Python, Pandas, and NumPy, and visualized findings with Matplotlib through exploratory data analysis.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== EDUCATION SECTION (FROM RESUME) ==================== -->
+  <section id="education" class="py-16 sm:py-24 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Education &amp; Credentials</h2>
+        <div class="header-line"></div>
+      </div>
+
+      <div class="space-y-4 sm:space-y-5">
+        
+        <!-- 1. Poornima University -->
+        <div class="slate-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white">Poornima University, Jaipur</h3>
+            <div class="text-xs sm:text-sm text-slate-300">Bachelor of Technology, Computer Science and Engineering</div>
+          </div>
+          <div class="text-xs font-mono font-semibold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg shrink-0 self-start sm:self-auto">
+            2021 – 2025
+          </div>
+        </div>
+
+        <!-- 2. The Fabindia School -->
+        <div class="slate-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white">The Fabindia School, Bali</h3>
+            <div class="text-xs sm:text-sm text-slate-300">Class 12, Central Board of Secondary Education (CBSE)</div>
+          </div>
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">93%</span>
+            <span class="text-xs font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded-lg border border-white/5">2020 – 2021</span>
+          </div>
+        </div>
+
+        <!-- 3. St. Paul's School -->
+        <div class="slate-card p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-white">St. Paul’s School, Falna</h3>
+            <div class="text-xs sm:text-sm text-slate-300">Class 10, Central Board of Secondary Education (CBSE)</div>
+          </div>
+          <div class="flex items-center gap-2 self-start sm:self-auto">
+            <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">90.80%</span>
+            <span class="text-xs font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded-lg border border-white/5">2018 – 2019</span>
+          </div>
+        </div>
+
+        <!-- Certifications & Achievements Banner -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+          <div class="p-4 rounded-xl bg-slate-900 border border-white/10 text-xs text-slate-300">
+            <div class="font-mono text-indigo-400 uppercase font-semibold mb-1">Certification:</div>
+            <div>&bull; Python Data Science Basics with NumPy and Pandas</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 border border-white/10 text-xs text-slate-300">
+            <div class="font-mono text-purple-400 uppercase font-semibold mb-1">Achievement:</div>
+            <div>&bull; Secured 1st position in Jaipur District Gridiron (American Football)</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION (WORKING FORM WITH PROPER EMAIL) ==================== -->
+  <section id="contact" class="py-16 sm:py-24 relative z-10 bg-[#0b112040]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Get In Touch</h2>
+        <div class="header-line"></div>
+        <p class="max-w-xl mx-auto text-slate-400 text-xs sm:text-base leading-relaxed px-2">
+          Have an exciting project in mind or looking for a dedicated WordPress developer? Let's talk.
+        </p>
+      </div>
+
+      <!-- Split Contact Container -->
+      <div class="slate-card p-6 sm:p-12 lg:p-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
+          
+          <!-- Left: Contact Details -->
+          <div class="lg:col-span-5 space-y-5 sm:space-y-6">
+            <h3 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Let's build something great together.
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              I am open to freelance projects, contract work, and full-time opportunities. Send me a message and I will get back to you promptly.
+            </p>
+
+            <div class="space-y-3.5 sm:space-y-4 pt-2 text-xs sm:text-sm font-sans">
+              
+              <!-- Email -->
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400 font-mono">Email Me Directly</div>
+                  <a href="mailto:guptalochita@gmail.com" class="text-white hover:text-indigo-400 font-semibold transition-colors break-all">
+                    guptalochita@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400 font-mono">Phone / WhatsApp</div>
+                  <a href="tel:+918290791364" class="text-white hover:text-indigo-400 font-medium transition-colors">
+                    +91 8290791364
+                  </a>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400 font-mono">Location</div>
+                  <div class="text-white font-medium">India (Open for Remote Worldwide)</div>
+                </div>
+              </div>
+
+              <!-- Availability -->
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400 font-mono">Availability</div>
+                  <div class="text-emerald-400 font-medium">Open to Freelance &amp; Jobs</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex gap-2.5 pt-2">
+              <a href="https://github.com/guptalochita18" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 hover:text-white border border-white/10 transition-all min-h-[40px] flex items-center">
+                GitHub
+              </a>
+              <a href="https://linkedin.com/in/lochita-gupta-98a15a225" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 hover:text-white border border-white/10 transition-all min-h-[40px] flex items-center">
+                LinkedIn
+              </a>
+              <a href="https://wa.me/918290791364" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-emerald-400 hover:text-white border border-white/10 transition-all min-h-[40px] flex items-center">
+                WhatsApp
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right: Working Contact Form -->
+          <div class="lg:col-span-7 w-full">
+            <form id="contact-form" onsubmit="handleInquirySubmit(event)" class="space-y-4">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1.5 uppercase font-medium">Your Name *</label>
+                  <input type="text" id="contact-name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-white/15 text-white text-base sm:text-sm focus:outline-none focus:border-indigo-400 transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 mb-1.5 uppercase font-medium">Your Email *</label>
+                  <input type="email" id="contact-email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-white/15 text-white text-base sm:text-sm focus:outline-none focus:border-indigo-400 transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-slate-300 mb-1.5 uppercase font-medium">Project Scope</label>
+                <select id="contact-project" class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-white/15 text-white text-base sm:text-sm focus:outline-none focus:border-indigo-400 transition-colors">
+                  <option value="WordPress Website Development">WordPress Website Development</option>
+                  <option value="WooCommerce E-Commerce Store">WooCommerce E-Commerce Store</option>
+                  <option value="Custom Plugin Development">Custom Plugin Development</option>
+                  <option value="Divi / Elementor Redesign">Divi / Elementor Redesign</option>
+                  <option value="Full-Time / Contract Position">Full-Time / Contract Position</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-slate-300 mb-1.5 uppercase font-medium">Message *</label>
+                <textarea id="contact-message" required rows="4" placeholder="Tell me about your website requirements, goals, or role..." class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-white/15 text-white text-base sm:text-sm focus:outline-none focus:border-indigo-400 transition-colors"></textarea>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+                <button type="submit" class="btn-primary w-full sm:w-auto">
+                  <span>Send Message &rarr;</span>
+                </button>
+                <button type="button" onclick="copyInquiryToClipboard()" class="px-4 py-3 text-xs font-mono font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-white/10 rounded-lg transition-all text-center min-h-[46px]">
+                  Copy Details to Clipboard
+                </button>
+              </div>
+
+              <div id="contact-toast" class="hidden p-3.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-mono text-center">
+                ✓ Message prepared! Your email client has opened with the draft ready to send to guptalochita@gmail.com.
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-10 sm:py-12 border-t border-white/10 text-center text-xs text-slate-500 px-4">
+    <div class="max-w-7xl mx-auto space-y-2">
+      <div class="font-bold text-slate-300 text-sm">
+        Lochita Gupta <span class="text-indigo-400">&bull;</span> WordPress Developer
+      </div>
+      <div class="text-[11px] sm:text-xs">
+        Email: <a href="mailto:guptalochita@gmail.com" class="text-indigo-400 hover:underline">guptalochita@gmail.com</a> &bull; Phone: +91 8290791364
+      </div>
+      <div class="pt-1 text-slate-600 text-[11px]">
+        &copy; 2026 Lochita Gupta. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== RESUME MODAL ==================== -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="slate-card relative w-full max-w-lg p-6 sm:p-8 space-y-5 bg-[#0b1120]">
+      <button onclick="toggleResumeModal(false)" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 text-sm font-bold">✕</button>
+      
+      <div>
+        <div class="text-xs font-mono text-indigo-400 font-semibold uppercase tracking-wider">Curriculum Vitae</div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">Lochita Gupta &mdash; WordPress Developer</h3>
+        <p class="text-xs text-slate-400 mt-1">1+ Year Commercial Experience &bull; 20+ Live Websites</p>
+      </div>
+
+      <div class="p-4 rounded-xl bg-slate-900 border border-white/10 space-y-3 text-xs text-slate-300 leading-relaxed font-sans">
+        <p>
+          WordPress Developer with 1+ year of professional experience building and maintaining production WordPress and WooCommerce websites, plus custom plugin development and API integration.
+        </p>
+        <div class="space-y-1 font-mono text-[11px] text-slate-400">
+          <div>&bull; Email: <span class="text-white">guptalochita@gmail.com</span></div>
+          <div>&bull; Phone: <span class="text-white">+91 8290791364</span></div>
+          <div>&bull; Location: <span class="text-white">Jodhpur / Jaipur, India (Remote)</span></div>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2.5 pt-2">
+        <button onclick="toggleResumeModal(false)" class="px-4 py-2 rounded-lg bg-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-700 min-h-[40px]">Close</button>
+        <a href="mailto:guptalochita@gmail.com?subject=Job%20Opportunity%20/%20Project%20Inquiry" class="btn-primary !py-2 !px-4 text-xs">
+          Contact Lochita
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT CONTROLLERS ==================== -->
+  <script>
+    // 1. Clear any outdated blurry localStorage image keys
+    try {
+      localStorage.removeItem('lochita_custom_photo_v2');
+    } catch(e) {}
+
+    // 2. Navbar Scroll Observer
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 30) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+
+    // 3. User Photo Upload & Persistence
+    function handleUserPhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64Img = e.target.result;
+        document.getElementById('hero-profile-photo').src = base64Img;
+        document.getElementById('about-profile-photo').src = base64Img;
+
+        try {
+          localStorage.setItem('lochita_custom_photo_v3', base64Img);
+        } catch(err) {}
+
+        alert("✓ Photo updated! Your picture is now displayed in the portfolio.");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 4. Load Photo from localStorage if custom photo exists
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedPhoto = localStorage.getItem('lochita_custom_photo_v3');
+      if (savedPhoto) {
+        document.getElementById('hero-profile-photo').src = savedPhoto;
+        document.getElementById('about-profile-photo').src = savedPhoto;
+      }
+    });
+
+    // 5. Mobile Nav Toggle
+    function toggleMobileNav() {
+      const menu = document.getElementById('mobile-nav');
+      menu.classList.toggle('hidden');
+    }
+
+    // 6. Resume Modal
+    function toggleResumeModal(show) {
+      const modal = document.getElementById('resume-modal');
+      if (show) modal.classList.remove('hidden');
+      else modal.classList.add('hidden');
+    }
+
+    // 7. Project Category Filter
+    function filterProjects(category) {
+      const items = document.querySelectorAll('.project-item');
+      const tabs = ['all', 'ecommerce', 'healthcare', 'fitness', 'advisory'];
+
+      tabs.forEach(t => {
+        const tabEl = document.getElementById('tab-' + t);
+        if (t === category) {
+          tabEl.className = 'px-3.5 sm:px-5 py-2 rounded-full text-xs font-semibold transition-all bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-md shadow-indigo-500/20';
+        } else {
+          tabEl.className = 'px-3.5 sm:px-5 py-2 rounded-full text-xs font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-white/10';
+        }
+      });
+
+      items.forEach(item => {
+        const itemCat = item.getAttribute('data-category');
+        if (category === 'all' || itemCat === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // 8. Contact Form Email Generator
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      const project = document.getElementById('contact-project').value;
+      const message = document.getElementById('contact-message').value;
+
+      const subject = encodeURIComponent(`WordPress Project Inquiry: ${project} (from ${name})`);
+      const body = encodeURIComponent(
+        `Hi Lochita,\n\nName: ${name}\nEmail: ${email}\nProject Scope: ${project}\n\nMessage:\n${message}\n\n---\nSent via portfolio contact form`
+      );
+
+      // Opens default email client pre-addressed to guptalochita@gmail.com
+      window.location.href = `mailto:guptalochita@gmail.com?subject=${subject}&body=${body}`;
+      
+      const toast = document.getElementById('contact-toast');
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 8000);
+    }
+
+    // 9. Copy Inquiry to Clipboard helper
+    function copyInquiryToClipboard() {
+      const name = document.getElementById('contact-name').value || 'Prospective Client';
+      const email = document.getElementById('contact-email').value || 'Not provided';
+      const project = document.getElementById('contact-project').value;
+      const message = document.getElementById('contact-message').value || 'Hello Lochita, I would like to discuss a WordPress project.';
+
+      const text = `WordPress Project Inquiry\nTo: guptalochita@gmail.com\nFrom: ${name} (${email})\nScope: ${project}\n\n${message}`;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✓ Inquiry details copied to clipboard! You can paste and send directly to guptalochita@gmail.com or on WhatsApp.");
+      }).catch(() => {
+        alert("To: guptalochita@gmail.com\n" + text);
+      });
+    }
+  </script>
+</body>
+</html>

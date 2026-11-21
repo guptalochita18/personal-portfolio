@@ -1,0 +1,23 @@
+# Dependencies & Environment
+node_modules/
+.env
+.env.*
+
+# Local Workspace Control Files & Backups
+BACKUPS/
+ARCHIVES/
+AI_HANDOFF/
+DOCUMENTS/
+OUTPUTS/
+SOURCE_FILES/
+PROJECT_DASHBOARD.html
+PROJECT_MEMORY.json
+CHANGELOG.md
+NEXT_ACTIONS.md
+
+# Operating System & IDE Files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
